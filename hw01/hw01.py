@@ -73,7 +73,6 @@ def largest_factor(n):
             return factor
 
 
-
 def hailstone(n):
     """Print the hailstone sequence starting at n and return its
     length.
