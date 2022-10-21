@@ -32,7 +32,8 @@ def product(n, term):
     162
     """
     from functools import reduce
-    return reduce(mul, [term(i) for i in range(1,n+1)])
+
+    return reduce(mul, [term(i) for i in range(1, n + 1)])
 
 
 def accumulate(merger, start, n, term):
@@ -59,8 +60,11 @@ def accumulate(merger, start, n, term):
     >>> accumulate(lambda x, y: (x + y) % 17, 19, 20, square)
     16
     """
-    seq = [start,]+[term(i) for i in range(1,n+1)]
+    seq = [
+        start,
+    ] + [term(i) for i in range(1, n + 1)]
     from functools import reduce
+
     return reduce(merger, seq)
 
 
@@ -78,7 +82,7 @@ def summation_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(summation_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    return accumulate(add,0,n,term)
+    return accumulate(add, 0, n, term)
 
 
 def product_using_accumulate(n, term):
@@ -95,4 +99,4 @@ def product_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(product_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    return accumulate(mul,1,n,term)
+    return accumulate(mul, 1, n, term)

@@ -13,12 +13,12 @@ def falling(n, k):
     from itertools import islice
     from functools import reduce
     from operator import mul
+
     if not k:
         return 1
-    assert k>0, "k shouldn't be negative"
-    l = list(range(1,n+1))
-    l.reverse()
-    return reduce(mul, islice(l, 0, k))
+    assert k > 0, "k shouldn't be negative"
+
+    return reduce(mul, islice(reversed(range(1, n + 1)), 0, k))
 
 
 def sum_digits(y):
@@ -35,9 +35,9 @@ def sum_digits(y):
     6
     """
     l = []
-    while y>0:
-        l.append(y%10)
-        y = y//10
+    while y > 0:
+        l.append(y % 10)
+        y = y // 10
     return sum(l)
 
 

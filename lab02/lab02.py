@@ -54,8 +54,9 @@ def count_cond(condition):
     >>> count_primes(20)   # 2, 3, 5, 7, 11, 13, 17, 19
     8
     """
+
     def x_filter(n):
-        return len([ i for i in range(1,n+1) if condition(n, i) ])
+        return len([i for i in range(1, n + 1) if condition(n, i)])
 
     return x_filter
 
@@ -121,13 +122,17 @@ def cycle(f1, f2, f3):
     >>> do_two_cycles(1)
     19
     """
-    func_list = ( f1, f2, f3 )
+    func_list = (f1, f2, f3)
+
     def hf(c):
         if c == 0:
             return lambda seed: seed
+
         def iter_func(seed):
-            for i in range(0,c):
-                seed = func_list[i%3](seed)
+            for i in range(0, c):
+                seed = func_list[i % 3](seed)
             return seed
+
         return iter_func
+
     return hf
